@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "target": "Antigravity Desktop (not Antigravity IDE)",
+  "platform": "macOS",
+  "bundle_id": "com.google.antigravity",
+  "versions": {
+    "2.22.0": {
+      "preload_sha256": "81d220de63447d27db95adf67d9711b59ee317b2338ba538f419b354a54b1f60",
+      "entry": "dist/preload.js",
+      "native_ui_tested": false
+    }
+  }
+}
