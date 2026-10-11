@@ -232,7 +232,8 @@ def load_backup(app):
     record = safe_path(root / 'manifest.json')
     meta = json.loads(record.read_text(encoding='utf-8'))
     if (meta.get('schema') != 1 or meta.get('platform') != 'windows-x64'
-            or meta.get('app') != str(app) or meta.get('version') != rules()['version']):
+            or not isinstance(meta.get('app'), str) or Path(meta['app']) != app
+            or meta.get('version') != rules()['version']):
         raise ValueError('备份记录与应用路径或版本不匹配；请勿移动或修改备份目录')
     original = root / 'original'
     if snapshot(original) != meta.get('original_manifest'):

@@ -37,6 +37,7 @@ def package(runtime, output):
             hashes = {}
             def add(name, content):
                 info = zipfile.ZipInfo(prefix + '/' + name, date_time=(2026, 10, 11, 0, 0, 0))
+                info.create_system = 3
                 info.compress_type = zipfile.ZIP_DEFLATED
                 info.external_attr = 0o100644 << 16
                 out.writestr(info, content)

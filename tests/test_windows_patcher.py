@@ -194,6 +194,12 @@ class WindowsInstallerTests(unittest.TestCase):
         w.install(self.app, True)
         w.restore(self.app)
 
+    @unittest.skipUnless(sys.platform == 'win32', 'Windows case-insensitive paths')
+    def test_path_case_does_not_invalidate_recovery_record(self):
+        w.install(self.app, True)
+        w.restore(self.app.with_name('ANTIGRAVITY'))
+        self.assertEqual(w.snapshot(self.app), self.before)
+
     def test_restore_replace_failure_keeps_patch_and_backup(self):
         w.install(self.app, True)
         before = w.snapshot(self.app)

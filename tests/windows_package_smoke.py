@@ -26,7 +26,10 @@ def main():
     print(result.stdout)
     print(result.stderr)
     assert result.returncode == 0, 'Embedded Python tests failed'
-    result = subprocess.run(['cmd', '/d', '/c', str(folder / 'Windows-Start.cmd'), '--help'],
+    # cmd /s removes one surrounding quote pair. Preserve the inner pair around
+    # the script path, including spaces and &, as Explorer's launcher does.
+    command = f'cmd.exe /d /s /c ""{folder / "Windows-Start.cmd"}" --help"'
+    result = subprocess.run(command,
                             cwd=folder, input='\n', capture_output=True, text=True, encoding='utf-8')
     print(result.stdout)
     print(result.stderr)
