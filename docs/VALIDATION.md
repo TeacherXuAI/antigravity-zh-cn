@@ -9,13 +9,15 @@
 - Python 安装事务测试使用合成 `.app` 与模拟签名命令；不能据此声称 Apple 已公证补丁。
 - 本机原版 Antigravity Desktop 2.22.0 的只读诊断通过，preload SHA-256 与兼容表一致。
 
+- GitHub Actions 的 macOS / Ubuntu 两个平台均通过 19 项测试和构建一致性检查：[运行记录](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/runs/38126500259)。
+
 ## 原生应用实测
 
 实机环境：macOS 26.5.2，Apple Silicon，Antigravity Desktop 2.22.0。
 
 - 原版包签名、Apple 公证、ASAR 校验和：通过。
 - 首轮只替换外层签名并保留动态库校验：启动失败，系统报告主程序与 Electron 框架 Team ID 不一致。
-- 执行完整还原后，原版 ASAR 与代码签名校验：通过。
+- 执行完整还原后，原版 ASAR 与代码签名校验：通过；原版已重新启动并进入正常主界面。
 - 已增加单独的 `--allow-local-library-loading` 同意参数，明确记录应用级动态库校验例外。缺少参数时停止安装。
 - 此例外模式的原生启动、设置页覆盖、中英文开关和重启：**尚未实机验证**。DOM 测试不能代替原生验证。
 
