@@ -8,6 +8,7 @@ import unittest
 from unittest.mock import patch
 import subprocess
 import shutil
+import sys
 
 spec = importlib.util.spec_from_file_location('patcher', Path(__file__).parents[1] / 'tools/patcher.py')
 p = importlib.util.module_from_spec(spec)
@@ -152,6 +153,8 @@ class InstallerTests(unittest.TestCase):
         with patch.object(p.sys,'platform','darwin'):
             with self.assertRaises(ValueError): p.install(self.app,False)
             with self.assertRaises(ValueError): p.install(self.app,True,False)
+        if sys.platform == 'win32':
+            return  # macOS process command lines use POSIX path separators.
         with patch.object(p,'run',return_value=subprocess.CompletedProcess([],0,str(self.app/'Contents/MacOS/Antigravity'),'')):
             with self.assertRaises(ValueError): p.ensure_stopped(self.app)
 

@@ -8,7 +8,7 @@ jobs:
   tests:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -23,3 +23,14 @@ jobs:
       - run: npm test
       - run: npm run build
       - run: git diff --exit-code -- dist/antigravity-zh-cn.js
+      - name: Build Windows test package with pinned Python runtime
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force work | Out-Null
+          $runtime = Get-Content tools/windows-runtime.json | ConvertFrom-Json
+          Invoke-WebRequest -Uri $runtime.url -OutFile work/python-runtime.zip
+          if ((Get-FileHash work/python-runtime.zip -Algorithm SHA256).Hash.ToLower() -ne $runtime.sha256) { throw 'Runtime hash mismatch' }
+          python tools/package_windows.py --runtime-zip work/python-runtime.zip --output work/windows-package
+          $package = (Get-ChildItem work/windows-package/*.zip).FullName
+          python tests/windows_package_smoke.py $package

@@ -81,11 +81,11 @@ class Archive:
 
 
 def build():
-    dictionary = json.loads((ROOT / 'locales/zh-CN.json').read_text())
+    dictionary = json.loads((ROOT / 'locales/zh-CN.json').read_text(encoding='utf-8'))
     if not dictionary or not all(isinstance(k, str) and k.strip() == k and
                                  isinstance(v, str) and v for k, v in dictionary.items()):
         raise ValueError('Invalid translation dictionary')
-    source = (ROOT / 'src/runtime.js').read_text()
+    source = (ROOT / 'src/runtime.js').read_text(encoding='utf-8')
     token = '/*__DICTIONARY__*/ {}'
     if source.count(token) != 1:
         raise ValueError('Invalid runtime template')
@@ -113,7 +113,7 @@ def paths(app):
 def inspect(app):
     app = assert_app_path(app)
     plist = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
-    compatibility = json.loads((ROOT / 'tools/compatibility.json').read_text())
+    compatibility = json.loads((ROOT / 'tools/compatibility.json').read_text(encoding='utf-8'))
     if plist.get('CFBundleIdentifier') != compatibility['bundle_id']:
         raise ValueError('This is not Antigravity Desktop')
     version = plist.get('CFBundleShortVersionString')
@@ -140,7 +140,7 @@ def report(info):
     backup, state = paths(info['app'])
     return {'app': str(info['app']), 'version': info['version'],
             'patched': info['patched'], 'asar_sha256': info['asar_sha256'],
-            'translations': len(json.loads((ROOT / 'locales/zh-CN.json').read_text())),
+            'translations': len(json.loads((ROOT / 'locales/zh-CN.json').read_text(encoding='utf-8'))),
             'backup': str(backup), 'state_present': state.exists(),
             'native_ui_tested': info['rule']['native_ui_tested'],
             'scope': 'Settings: General, Application, Appearance, Models; fixed navigation',

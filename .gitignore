@@ -8,3 +8,7 @@ __pycache__/
 *.log
 .env*
 coverage/
+runtime/
+*.exe
+*.zip
+work/
