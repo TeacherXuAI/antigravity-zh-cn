@@ -15,6 +15,33 @@
 
 如果这个项目对你有帮助，欢迎点击右上角 **⭐ Star** 支持维护。希望接收新版本通知，可在 **Watch → Custom → Releases** 中订阅。
 
+## 实机效果
+
+以下为 **2026-10-11，macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0** 的真实窗口截图。左侧为同一份应用关闭汉化后的英文原文，右侧为开启汉化后的中文；并非重新安装原版的对照实验。
+
+完整窗口保留，仅用实色块遮住左下角账号区域；未用 AI 重绘或改写截图文字。部分英文仍会保留，实际覆盖范围以图中效果为准。
+
+[![应用设置：汉化关闭与开启的实机对比](docs/images/application-comparison.png)](docs/images/application-comparison.png)
+
+**[查看全部高清截图与对比说明](docs/SCREENSHOTS.md)**。上图可点击放大；可核对版本号与原有开关状态保持一致。
+
+<details>
+<summary>展开查看中文最终效果、通用页与外观页对比</summary>
+
+### 中文应用设置：完整窗口
+
+![中文应用设置最终效果，账号已遮挡](docs/images/application-zh.png)
+
+### 通用设置：前后对比
+
+![通用设置前后对比，仍保留未翻译的英文](docs/images/general-comparison.png)
+
+### 外观设置：前后对比
+
+![外观设置前后对比，颜色值和代码示例保持原样](docs/images/appearance-comparison.png)
+
+</details>
+
 ## 能做什么
 
 - 翻译设置标签和说明，保留模型名称、版本号、额度数值。

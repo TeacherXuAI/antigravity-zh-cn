@@ -1,0 +1,53 @@
+{
+  "captured_on": "2026-10-11",
+  "app": "Google Antigravity Desktop",
+  "version": "2.22.0",
+  "platform": "macOS 26.5.2 / Apple Silicon",
+  "capture": "Native app screenshots via Codex computer-use",
+  "comparison": "Same installed build, translation toggle off vs on; not a separate unpatched installation",
+  "processing": "Opaque account rectangle only; other decoded RGB pixels unchanged. Comparison labels are outside the screenshots. No AI redraw.",
+  "redaction": {
+    "x": 188,
+    "y": 743,
+    "width": 202,
+    "height": 67
+  },
+  "images": [
+    {
+      "file": "application-en.png",
+      "state": "translation disabled",
+      "sha256": "d82fa46424c77bcd92953e92a00e1b1f43dddece110b9741eb2233ac9117a4e3",
+      "pixels_changed_outside_redaction": 0
+    },
+    {
+      "file": "application-zh.png",
+      "state": "translation enabled",
+      "sha256": "197121905fb9079afbf369fc9a4ccb1d007d940424f340c0a760b22fe598fee3",
+      "pixels_changed_outside_redaction": 0
+    },
+    {
+      "file": "general-en.png",
+      "state": "translation disabled",
+      "sha256": "d9db84cd4d73a5612dec750d3a53cb14dd4bfa59063359a02e1f9d8c396330d9",
+      "pixels_changed_outside_redaction": 0
+    },
+    {
+      "file": "general-zh.png",
+      "state": "translation enabled",
+      "sha256": "d8d882bb19050bc514dcfaf28ceb039c271f79d34b2001b9290065c13a417203",
+      "pixels_changed_outside_redaction": 0
+    },
+    {
+      "file": "appearance-en.png",
+      "state": "translation disabled",
+      "sha256": "4e3c1acb9d8236764082f01a34313bdb5411f07c3297144a36e77c6ec7921a8b",
+      "pixels_changed_outside_redaction": 0
+    },
+    {
+      "file": "appearance-zh.png",
+      "state": "translation enabled",
+      "sha256": "ad04db7b8d95d23101508ada754f4dd3b9b2b5e7496a130f9a2c245ee37114ee",
+      "pixels_changed_outside_redaction": 0
+    }
+  ]
+}
