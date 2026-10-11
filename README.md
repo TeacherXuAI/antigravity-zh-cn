@@ -1,5 +1,7 @@
 # Antigravity 简体中文汉化补丁
 
+> **Windows 开发分支**：Windows 11 x64 安装器正在进行发布前验证，尚未正式发布。测试包说明见 [Windows 测试指南](docs/WINDOWS.md)。以下 v0.1.1 下载与实机截图仍对应 macOS。
+
 [![Version](https://img.shields.io/badge/version-v0.1.1-blue)](https://github.com/TeacherXuAI/antigravity-zh-cn/releases/tag/v0.1.1)
 [![Tests](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml/badge.svg)](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -54,7 +56,8 @@
 | 操作系统 | macOS |
 | 处理器 | Apple Silicon 已实测；Intel Mac 尚未实测 |
 | 安装环境 | Python **3.9+**，无需 Node.js 或 npm 依赖 |
-| Windows / Linux | 暂无安装器 |
+| Windows | 本开发分支提供待实机验证的 Windows 11 x64 安装器，尚未正式发布 |
+| Linux | 暂无安装器 |
 | Antigravity IDE / VS Code | 不支持 |
 
 安装器同时核对版本号与入口文件指纹。应用版本不受支持时，安装将停止，请勿通过修改版本号或指纹强行安装。

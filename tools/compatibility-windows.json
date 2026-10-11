@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "target": "Antigravity Desktop (not Antigravity IDE)",
+  "platform": "Windows 11 x64",
+  "patch_version": "0.2.0-windows-test.1",
+  "native_ui_tested": false,
+  "version": "2.22.0",
+  "entry": "dist/preload.js",
+  "exe": "Antigravity.exe",
+  "asar": "resources/app.asar",
+  "exe_sha256": "df5030f1f8e1fb6b1b732629e802455d1ff4bd2eeae5f38eb733163e92ad2dfa",
+  "asar_sha256": "259c83ffa266088dda6ede520a601bbf06cc5c34985cdf56c5d68549c98dbb0e",
+  "preload_sha256": "81d220de63447d27db95adf67d9711b59ee317b2338ba538f419b354a54b1f60",
+  "fuse_offset": 199287352,
+  "fuses_v1": "101100011",
+  "source": {
+    "page": "https://antigravity.google/download",
+    "url": "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.22.0-5446056071266304/windows-x64/Antigravity-x64.exe",
+    "sha256": "970c8180dde41ccb67b944eda9755a35d5ce669f6db5b501399dc069d73f667d",
+    "checked_on": "2026-10-11"
+  }
+}
