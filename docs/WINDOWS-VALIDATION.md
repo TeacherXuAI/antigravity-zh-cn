@@ -33,6 +33,15 @@ Electron 配置解释依据 [ASAR Integrity 文档](https://www.electronjs.org/d
 
 官方文件往返验证结果：423 个应用文件中仅 `resources/app.asar` 发生变化，ASAR 内另外 737 个已打包文件内容不变；还原后所有应用文件的大小与 SHA-256 均与原版一致，主程序 SHA-256 始终不变。
 
+2026-10-11 [GitHub Actions 验证](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/runs/38135086832)已通过，代码提交为 `cb936364709aa14ac37fd3d3bcc58232df0d0326`：
+
+| 环境 | 结果 |
+| --- | --- |
+| Windows 托管主机 | 8 项 DOM 测试、41 项 Python 测试全部通过 |
+| Windows 测试 ZIP | 内置 Python 执行 30 项 Windows 测试通过；含中文、空格和 `&` 的路径中启动脚本检查通过 |
+| macOS / Ubuntu 托管主机 | 各 45 项测试通过；4 项 Windows 原生检查按平台跳过 |
+| 构建一致性 | 三个平台构建的翻译脚本一致，未改变已发布翻译内容 |
+
 CI 的 Windows 执行环境是 GitHub 托管主机，不能代替普通用户的 Windows 11 桌面实测，也不能验证 SmartScreen、账号登录或界面效果。
 
 ## 待实机验证
