@@ -7,12 +7,12 @@
 
 **v0.1.0 是有限范围的预览版，不是完整汉化。** 当前词库 92 条，主要覆盖「通用、应用、外观、模型与用量」四个设置页，以及部分固定导航。其余页面保留原文。
 
-> **实机状态：尚未完成端到端汉化验证。** 首轮遇到 macOS 动态库签名限制，已验证可完整还原原版。修复路径需要额外的应用级校验例外，目前请按开发预览看待；详情见 [验证记录](docs/VALIDATION.md)。
+> **实机已验证：macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0。** 已确认四个目标设置页显示中文、关闭汉化恢复英文、重启默认开启，以及完整还原后恢复 Google 原签名和公证。仍是有限范围的预览版；详情见 [验证记录](docs/VALIDATION.md)。
 
 ## 能做什么
 
 - 翻译设置标签和说明，保留模型名称、版本号、额度数值。
-- 右下角「中文 · 开 / 关」立即切换。关闭时恢复原文；重启后默认开启。
+- 关闭设置面板后，右下角「中文 · 开 / 关」立即切换。关闭时恢复原文；重启后默认开启。
 - 不做全文替换；通过设置面板和固定导航范围定位，跳过聊天区域、代码、输入框、可编辑内容和账号按钮。
 - 支持动态页面更新，不包裹或重新创建原有文本节点。
 - 安装前核对版本、原始 preload 指纹、ASAR 完整性、Google 签名与 macOS 公证。
@@ -71,7 +71,7 @@ python3 tools/patcher.py doctor
 python3 tools/patcher.py install --acknowledge-signature-change --allow-local-library-loading
 ```
 
-安装完成后，从「应用程序」重新打开 Antigravity，进入 Settings。右下角有中文切换按钮。不要手动删除 `.zh-cn-original` 备份和 `.zh-cn-state.json` 恢复记录。
+安装完成后，从「应用程序」重新打开 Antigravity，进入 Settings。关闭设置面板后，可使用右下角的中文切换按钮。请从 `/Applications/Antigravity.app` 打开修改版，避免系统按相同应用标识误选原版备份。不要手动删除 `.zh-cn-original` 备份和 `.zh-cn-state.json` 恢复记录。
 
 自定义安装路径可使用 `--app "/完整路径/Antigravity.app"`。v0.1 拒绝符号链接路径；路径需指向真实应用目录。不建议使用 `sudo`；没有写入权限时请停止。
 
