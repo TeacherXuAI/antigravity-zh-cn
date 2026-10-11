@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   const dictionary = /*__DICTIONARY__*/ {};
-  const VERSION = '0.1.0';
+  const VERSION = '0.1.1';
   const KEY = '__teacherxu_antigravity_zh__';
   if (window[KEY]) return;
   // The native application serves its UI locally. Never translate sign-in sites.
