@@ -1,13 +1,19 @@
-# Antigravity 简体中文界面 · 徐老师AI
+# Google Antigravity 中文汉化补丁 · 徐老师AI
 
 [![Tests](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml/badge.svg)](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-给 **Google Antigravity Desktop 2.22.0** 的设置页增加简体中文。独立实现的实验性社区项目，非 Google 官方产品，也不是 Antigravity IDE / VS Code 语言包。
+给 **Google Antigravity（反重力）Desktop 2.22.0** 的设置页增加简体中文。独立实现的实验性社区项目，非 Google 官方产品，也不是 Antigravity IDE / VS Code 语言包。
 
 **v0.1.0 是有限范围的预览版，不是完整汉化。** 当前词库 92 条，主要覆盖「通用、应用、外观、模型与用量」四个设置页，以及部分固定导航。其余页面保留原文。
 
 > **实机已验证：macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0。** 已确认四个目标设置页显示中文、关闭汉化恢复英文、重启默认开启，以及完整还原后恢复 Google 原签名和公证。仍是有限范围的预览版；详情见 [验证记录](docs/VALIDATION.md)。
+
+**[下载预览版](https://github.com/TeacherXuAI/antigravity-zh-cn/releases) · [安装与还原](#install) · [实测记录](docs/VALIDATION.md) · [问题反馈](https://github.com/TeacherXuAI/antigravity-zh-cn/issues) · [认识徐老师AI](https://github.com/TeacherXuAI)**
+
+适合正在使用上述 Mac 版本、希望看懂英文设置的用户。包含中文词库、安装检查和完整原版还原工具。
+
+如果这个项目对你有帮助，欢迎点击右上角 **⭐ Star** 支持维护。希望接收新版本通知，可在 **Watch → Custom → Releases** 中订阅。
 
 ## 能做什么
 
@@ -43,6 +49,8 @@
 安装器不关闭系统 Gatekeeper、不删除隔离属性、不关闭 Hardened Runtime、不改 Electron 的安全开关，也不启用远程调试端口。若系统阻止运行，请还原原版，不要关闭系统保护。完整原版会保存在应用旁边：`Antigravity.app.zh-cn-original`。
 
 项目不收集遥测，不读账号凭据、不上传对话，翻译运行时代码不发起网络请求。仓库只分发原创代码和词库，不包含 Google 应用、安装包或解包后的源码。
+
+<a id="install"></a>
 
 ## 使用
 
@@ -125,6 +133,22 @@ npm run build
 ## 贡献与反馈
 
 请看 [贡献指南](CONTRIBUTING.md)。Issue 中请只提供版本、系统、步骤和已打码的截图。不要上传邮箱、登录二维码、凭据、对话内容、完整应用或个人目录。
+
+## 作者与交流
+
+我是 **[徐老师AI / TeacherXuAI](https://github.com/TeacherXuAI)**，一名 AI 博主，分享 AI 工具实测、使用教程和开源小工具。
+
+| 平台 | 如何找到我 |
+| --- | --- |
+| 抖音 | 搜索 **徐老师AI** |
+| 视频号 | 搜索 **徐老师AI** |
+| 小红书 | 搜索 **徐老师AI** |
+
+**微信交流：`XLSbenren`**。AI 工具交流、使用体验或合作联系，添加时请备注「GitHub + 来意」。
+
+安装报错和翻译问题请优先提交 [Issue](https://github.com/TeacherXuAI/antigravity-zh-cn/issues)，便于其他用户检索和一起解决；请勿在公开 Issue 中发送账号、凭据或未打码的个人信息。
+
+欢迎在 GitHub **[关注我](https://github.com/TeacherXuAI)**，查看后续项目；下载和使用本项目无需关注或加微信。
 
 ## 声明
 
