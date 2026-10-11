@@ -136,7 +136,7 @@
     control = document.createElement('button');
     control.type = 'button';
     control.dataset.antigravityZhControl = VERSION;
-    control.title = '徐老师AI 汉化预览：点击切换中英文；重启默认开启';
+    control.title = '徐老师AI 汉化：点击切换中英文；重启默认开启';
     control.setAttribute('aria-label', '切换界面汉化');
     control.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:2147483647;' +
       'font:12px system-ui;padding:6px 10px;border:1px solid #aaa;border-radius:20px;' +

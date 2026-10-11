@@ -3,142 +3,133 @@
 [![Tests](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml/badge.svg)](https://github.com/TeacherXuAI/antigravity-zh-cn/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-给 **Google Antigravity（反重力）Desktop 2.22.0** 的设置页增加简体中文。独立实现的实验性社区项目，非 Google 官方产品，也不是 Antigravity IDE / VS Code 语言包。
+看 Antigravity 的英文设置有些费劲？这个补丁可以把常用设置换成简体中文，想看原文时也能切回去。
 
-**v0.1.0 是有限范围的预览版，不是完整汉化。** 当前词库 92 条，主要覆盖「通用、应用、外观、模型与用量」四个设置页，以及部分固定导航。其余页面保留原文。
+由 **徐老师AI** 制作并开源。目前支持 **Google Antigravity（反重力）Desktop 2.22.0 的 macOS 版本**，已在 Apple Silicon Mac 上测试。这是社区汉化补丁，与 Google 官方无关。
 
-> **实机已验证：macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0。** 已确认四个目标设置页显示中文、关闭汉化恢复英文、重启默认开启，以及完整还原后恢复 Google 原签名和公证。仍是有限范围的预览版；详情见 [验证记录](docs/VALIDATION.md)。
+**v0.1.0 正式版**收录了 92 条译文，主要用于「通用、应用、外观、模型与用量」四个设置页，以及部分导航。**还不是全界面汉化**，没翻译的地方会保留英文；可以先看下面的实机截图。
 
-**[下载预览版](https://github.com/TeacherXuAI/antigravity-zh-cn/releases) · [安装与还原](#install) · [实测记录](docs/VALIDATION.md) · [问题反馈](https://github.com/TeacherXuAI/antigravity-zh-cn/issues) · [认识徐老师AI](https://github.com/TeacherXuAI)**
+**[下载 v0.1.0](https://github.com/TeacherXuAI/antigravity-zh-cn/releases/tag/v0.1.0) · [安装与还原](#install) · [测试记录](docs/VALIDATION.md) · [反馈问题](https://github.com/TeacherXuAI/antigravity-zh-cn/issues)**
 
-适合正在使用上述 Mac 版本、希望看懂英文设置的用户。包含中文词库、安装检查和完整原版还原工具。
-
-如果这个项目对你有帮助，欢迎点击右上角 **⭐ Star** 支持维护。希望接收新版本通知，可在 **Watch → Custom → Releases** 中订阅。
+用着有帮助的话，欢迎点一下右上角的 **⭐ Star**。想收到后续版本通知，可以在 **Watch → Custom → Releases** 中订阅。
 
 ## 实机效果
 
-以下为 **2026-10-11，macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0** 的真实窗口截图。左侧为同一份应用关闭汉化后的英文原文，右侧为开启汉化后的中文；并非重新安装原版的对照实验。
+下面是在同一台 Mac、同一份应用中切换中英文后的截图。左边关闭汉化，右边开启汉化，页面里的设置值没有改动。
 
-完整窗口保留，仅用实色块遮住左下角账号区域；未用 AI 重绘或改写截图文字。部分英文仍会保留，实际覆盖范围以图中效果为准。
+拍摄于 **2026-10-11**，环境为 macOS 26.5.2 / Apple Silicon / Antigravity Desktop 2.22.0。图片保留完整窗口，只遮住左下角账号，没有重绘界面或补写中文。
 
 [![应用设置：汉化关闭与开启的实机对比](docs/images/application-comparison.png)](docs/images/application-comparison.png)
 
-**[查看全部高清截图与对比说明](docs/SCREENSHOTS.md)**。上图可点击放大；可核对版本号与原有开关状态保持一致。
+点击图片可以放大。[这里还有三组对比和六张完整窗口截图](docs/SCREENSHOTS.md)。
 
 <details>
-<summary>展开查看中文最终效果、通用页与外观页对比</summary>
+<summary>展开查看中文应用设置、通用页和外观页</summary>
 
-### 中文应用设置：完整窗口
+### 中文应用设置
 
-![中文应用设置最终效果，账号已遮挡](docs/images/application-zh.png)
+![中文应用设置完整窗口，账号已遮挡](docs/images/application-zh.png)
 
-### 通用设置：前后对比
+### 通用设置
 
-![通用设置前后对比，仍保留未翻译的英文](docs/images/general-comparison.png)
+![通用设置前后对比，部分说明仍为英文](docs/images/general-comparison.png)
 
-### 外观设置：前后对比
+### 外观设置
 
-![外观设置前后对比，颜色值和代码示例保持原样](docs/images/appearance-comparison.png)
+![外观设置前后对比，颜色值和代码示例保留原样](docs/images/appearance-comparison.png)
 
 </details>
 
-## 能做什么
+## 这一版能做什么
 
-- 翻译设置标签和说明，保留模型名称、版本号、额度数值。
-- 关闭设置面板后，右下角「中文 · 开 / 关」立即切换。关闭时恢复原文；重启后默认开启。
-- 不做全文替换；通过设置面板和固定导航范围定位，跳过聊天区域、代码、输入框、可编辑内容和账号按钮。
-- 支持动态页面更新，不包裹或重新创建原有文本节点。
-- 安装前核对版本、原始 preload 指纹、ASAR 完整性、Google 签名与 macOS 公证。
-- 保留完整原版应用，提供还原命令；未知版本和已有备份会停止安装。
+- 把常用设置标签和说明换成中文，模型名称、版本号、额度数值保留原样。
+- 在主界面点击右下角「中文 · 开 / 关」切换语言。切换前先关掉设置面板；重启后默认开启中文。
+- 安装前检查版本和原版文件，安装时保留完整备份，不想用了可以还原。
 
-## 当前限制
+聊天内容、代码、输入框、项目名和账号信息不在翻译范围内。
 
-| 项目 | 状态 |
+## 支持范围
+
+| 项目 | 目前情况 |
 | --- | --- |
-| 目标版本 | Antigravity Desktop **2.22.0**，另核对入口文件指纹 |
-| 安装平台 | macOS；当前实机环境为 Apple Silicon |
-| Windows / Linux | 暂无安装器，不承诺可用 |
-| Antigravity IDE | 不支持 |
+| 应用版本 | Antigravity Desktop **2.22.0**，安装时还会核对入口文件指纹 |
+| macOS | 提供安装器，已在 Apple Silicon 上实测；Intel Mac 尚未实测 |
+| Windows / Linux | 暂无安装器 |
+| Antigravity IDE / VS Code | 不支持，本项目不是编辑器语言包 |
 | 顶部 macOS 原生菜单 | 暂未汉化 |
-| 下拉弹出层、工具提示、辅助功能属性 | 暂未完整覆盖 |
-| 对话、自定义技能内容、历史和项目名 | 不在汉化目标内 |
-| 自动更新 | 更新可能覆盖补丁；不禁用更新，不强行覆盖新版 |
-| 账号登录、地区资格、额度 | 不处理，不绕过 |
+| 下拉菜单、工具提示及部分长说明 | 还没有完整覆盖 |
+| 应用更新 | 更新可能覆盖补丁；遇到未知版本会停止安装 |
+| 账号登录、地区资格、模型和额度 | 由 Antigravity 本身决定，汉化补丁不改变这些 |
 
-测试证据和未验证项见 [验证记录](docs/VALIDATION.md)。
+已在上述 Mac 环境验证安装、设置页显示、中英切换、重启和完整还原。[测试记录](docs/VALIDATION.md)中列出了具体结果和还没测到的情况。
 
-## 安装前需要知道
+## 安装前请看一下
 
-修改 `.app` 内容会使 Google 原有外层代码签名失效。安装器会对修改后的外层应用使用**本地 ad-hoc 签名**；这不等同于 Google 官方签名或 Apple 公证。macOS 安全策略或后续更新可能拒绝这份修改版。
+这类补丁需要修改应用文件，不能像普通语言设置那样直接启用。**安装后，修改版会改用本地 ad-hoc 签名，并为这一份应用放宽动态库签名校验。** 这会降低它对所加载动态库的身份校验，不等同于 Google 签名或 Apple 公证；系统策略或后续更新也可能阻止修改版运行。
 
-由于本地签名没有 Apple Team ID，还需要为修改版应用增加 `com.apple.security.cs.disable-library-validation` 权限，使它能够加载原有 Google 框架。**这会降低这一份应用对所加载动态库的身份校验，必须单独明确同意。**
+安装命令中的两个参数分别表示你接受这两项变化。完整原版保存在应用旁边的 `Antigravity.app.zh-cn-original`，请连同 `.zh-cn-state.json` 恢复记录一起保留。如果系统阻止运行，请先还原原版。
 
-安装器不关闭系统 Gatekeeper、不删除隔离属性、不关闭 Hardened Runtime、不改 Electron 的安全开关，也不启用远程调试端口。若系统阻止运行，请还原原版，不要关闭系统保护。完整原版会保存在应用旁边：`Antigravity.app.zh-cn-original`。
+补丁不读取账号凭据、不上传对话、不收集遥测，翻译代码也不发起网络请求。下载包只有补丁源码、词库、说明和截图，不包含 Google 应用。
 
-项目不收集遥测，不读账号凭据、不上传对话，翻译运行时代码不发起网络请求。仓库只分发原创代码和词库，不包含 Google 应用、安装包或解包后的源码。
+<details>
+<summary>签名与系统设置细节</summary>
+
+本地签名没有 Apple Team ID，因此修改版需要增加 `com.apple.security.cs.disable-library-validation` 权限，才能加载原有 Google 框架。安装器不会关闭系统 Gatekeeper 或 Hardened Runtime，不删除隔离属性，不改 Electron 安全开关，也不启用远程调试端口。
+
+安装前会核对版本、原始 preload 指纹、ASAR 完整性、Google 签名和 macOS 公证；遇到未知版本或已有备份会停止。完整还原会恢复备份中的原有文件和签名。
+
+</details>
 
 <a id="install"></a>
 
-## 使用
+## 下载、安装和还原
 
-需要 Python **3.9+**。安装使用 Python 标准库，不需要安装 Node.js 或 npm 依赖。请先从 [Google 官网](https://antigravity.google/download) 安装受支持版本。
+需要 Python **3.9+**。安装不需要 Node.js 或 npm 依赖。请先从 [Google 官网](https://antigravity.google/download) 安装受支持版本的 Antigravity。
 
-下载本仓库 ZIP 并解压，或者：
+在 [v0.1.0 发布页](https://github.com/TeacherXuAI/antigravity-zh-cn/releases/tag/v0.1.0)展开 **Assets**，下载 **antigravity-zh-cn-v0.1.0.zip**。解压后，在终端进入解压出来的文件夹，再运行下面的命令。也可以用 Git 下载：
 
 ```bash
 git clone https://github.com/TeacherXuAI/antigravity-zh-cn.git
 cd antigravity-zh-cn
 ```
 
-### 1. 只检查，不修改
+### 1. 检查是否支持
 
 ```bash
 python3 tools/patcher.py doctor
 ```
 
-会显示版本、是否已汉化、原版备份位置和校验值。未知版本会停止，**不要为了强行安装而改版本号或指纹**。
+这个命令只检查，不修改应用。它会显示版本、汉化状态、备份位置和校验值。如果提示版本不支持，请先等适配，不要改版本号或指纹强行安装。
 
-### 2. 完全退出应用后安装
+### 2. 退出应用，再安装
 
-先在 Antigravity 中按 `⌘Q`。确认接受上面的签名变化后执行：
+先在 Antigravity 中按 `⌘Q` 完全退出。确认接受前面说明的签名变化后，运行：
 
 ```bash
 python3 tools/patcher.py install --acknowledge-signature-change --allow-local-library-loading
 ```
 
-安装完成后，从「应用程序」重新打开 Antigravity，进入 Settings。关闭设置面板后，可使用右下角的中文切换按钮。请从 `/Applications/Antigravity.app` 打开修改版，避免系统按相同应用标识误选原版备份。不要手动删除 `.zh-cn-original` 备份和 `.zh-cn-state.json` 恢复记录。
+安装完成后，打开 `/Applications/Antigravity.app`，进入设置查看中文效果。主界面右下角可以切回英文；设置面板打开时，先关闭它再切换。不要双击旁边的原版备份。
 
-自定义安装路径可使用 `--app "/完整路径/Antigravity.app"`。v0.1 拒绝符号链接路径；路径需指向真实应用目录。不建议使用 `sudo`；没有写入权限时请停止。
+如果应用不在默认位置，可使用 `--app "/完整路径/Antigravity.app"` 指定真实目录，暂不支持符号链接。没有写入权限时请先停止，不建议加 `sudo` 强行安装。
 
-### 3. 还原原版
+### 3. 想换回原版
 
-完全退出应用，然后：
+完全退出应用，然后运行：
 
 ```bash
 python3 tools/patcher.py restore
 ```
 
-会校验备份并恢复完整原版应用及其原有签名。若应用在安装补丁后被更新，工具会停止，避免用旧版备份覆盖新版。此时可保留备份并从官网重新安装，或提交不含个人信息的问题报告。
+工具会校验备份，恢复完整原版及其签名。如果应用在安装补丁后更新过，还原会停止，避免用旧备份覆盖新版。此时请保留备份，从官网重新安装，或在仓库反馈具体情况。
 
-## 实现方式
+## 给想参与开发的朋友
 
-```text
-版本 / 指纹 / 签名检查
-       ↓
-准备完整应用副本 → 追加独立翻译运行时代码到 preload
-       ↓
-更新 ASAR 的文件校验和与 Info.plist 中的头部校验和
-       ↓
-明确允许本应用的动态库校验例外 → 本地签名并校验
-       ↓
-再次检查应用已退出、原版未变化
-       ↓
-保存恢复记录 → 原版改名为备份 → 替换为修改版
-```
+词库在 `locales/zh-CN.json`，翻译逻辑在 `src/runtime.js`，安装和还原工具在 `tools/patcher.py`。
 
-运行时只处理识别到的设置区域和固定导航，词条必须完整匹配，不使用模糊替换。关闭汉化时，仅恢复仍保持本工具译文的文本，避免覆盖应用后来更新的内容。
+运行时只处理识别到的设置区域和固定导航，词条需要完整匹配。关闭汉化时，只恢复仍保持本工具译文的文本，避免覆盖应用后来更新的内容。
 
-## 开发与测试
+安装器会准备完整应用副本，把翻译代码追加到 preload，再更新 ASAR 和 Info.plist 中的校验和。完成签名与校验后，再次检查应用已退出、原版未变化，最后保存恢复记录并替换应用。
 
 开发测试需要 Node.js 20+、npm 和 Python 3.9+：
 
@@ -148,35 +139,20 @@ npm test
 npm run build
 ```
 
-- `locales/zh-CN.json`：独立的中英文词库。
-- `src/runtime.js`：范围定位、动态翻译、原文恢复。
-- `tools/patcher.py`：只读诊断、ASAR 更新、安装和还原。
-- `tools/compatibility.json`：版本和入口文件指纹。
-- `dist/antigravity-zh-cn.js`：可重复构建的完整运行时代码。
-- `tests/`：DOM、ASAR、失败回滚、更新冲突和备份还原测试。
+`dist/antigravity-zh-cn.js` 是生成后的运行时代码，修改源码后请一并更新。`tools/compatibility.json` 记录支持版本和入口文件指纹。适配新版本需要重新检查界面、签名、安装和还原流程，不能只改版本号。
 
-目前未提供自动跟随上游版本的补丁。支持新版本前，应重新核对实际 DOM、入口代码、签名和安装/还原流程，再更新兼容清单。
-
-## 贡献与反馈
-
-请看 [贡献指南](CONTRIBUTING.md)。Issue 中请只提供版本、系统、步骤和已打码的截图。不要上传邮箱、登录二维码、凭据、对话内容、完整应用或个人目录。
+欢迎补译文、报问题或提 PR，具体见 [贡献指南](CONTRIBUTING.md)。反馈时带上系统版本、应用版本、操作步骤和打码后的截图，会更容易排查。请勿上传邮箱、登录二维码、对话内容或完整应用文件。
 
 ## 作者与交流
 
-我是 **[徐老师AI / TeacherXuAI](https://github.com/TeacherXuAI)**，一名 AI 博主，分享 AI 工具实测、使用教程和开源小工具。
+我是 **[徐老师AI](https://github.com/TeacherXuAI)**，平时做 AI 模型测评与教程，也分享机器人、好玩的智能产品和自己做的开源小工具。
 
-| 平台 | 如何找到我 |
-| --- | --- |
-| 抖音 | 搜索 **徐老师AI** |
-| 视频号 | 搜索 **徐老师AI** |
-| 小红书 | 搜索 **徐老师AI** |
+抖音、视频号、小红书都叫 **「徐老师AI」**，直接搜名字就能找到我。
 
-**微信交流：`XLSbenren`**。AI 工具交流、使用体验或合作联系，添加时请备注「GitHub + 来意」。
+**微信：`XLSbenren`**。聊 AI 工具、使用体验或合作都可以，添加时备注「GitHub + 来意」就好。安装报错或译文问题，尽量发到 [Issue](https://github.com/TeacherXuAI/antigravity-zh-cn/issues)，这样其他人遇到同样的问题也能找到答案。
 
-安装报错和翻译问题请优先提交 [Issue](https://github.com/TeacherXuAI/antigravity-zh-cn/issues)，便于其他用户检索和一起解决；请勿在公开 Issue 中发送账号、凭据或未打码的个人信息。
+项目可以直接下载使用，不需要先关注或加微信。想看看我后面做了什么，也欢迎在 GitHub [关注我](https://github.com/TeacherXuAI)。
 
-欢迎在 GitHub **[关注我](https://github.com/TeacherXuAI)**，查看后续项目；下载和使用本项目无需关注或加微信。
+## 许可
 
-## 声明
-
-由 **徐老师AI / TeacherXuAI** 发起维护。本项目的原创代码使用 [MIT License](LICENSE)；Google Antigravity 的名称、图标、软件及其条款仍归各自权利方。本项目不代表 Google、不与其关联，也不提供授权或资格绕过。
+本项目的原创代码使用 [MIT License](LICENSE)。Google Antigravity 的名称、图标、软件及相关权利归各自权利方所有。本项目由徐老师AI独立维护，不代表 Google。

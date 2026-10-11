@@ -1,6 +1,6 @@
 # 实机截图与前后对比
 
-日期：2026-10-11。环境：macOS 26.5.2，Apple Silicon，Google Antigravity Desktop 2.22.0，汉化补丁 v0.1.0 预览版。
+日期：2026-10-11。环境：macOS 26.5.2，Apple Silicon，Google Antigravity Desktop 2.22.0，汉化补丁 v0.1.0。
 
 ## 这些图片如何取得
 
