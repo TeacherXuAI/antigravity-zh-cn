@@ -78,7 +78,9 @@ class InstallerTests(unittest.TestCase):
         def loads(data, *args, **kwargs):
             value = self.real_json_loads(data, *args, **kwargs)
             if isinstance(value, dict) and value.get('target') == 'Antigravity Desktop (not Antigravity IDE)':
-                value['versions']['2.22.0']['preload_sha256'] = p.digest(preload)
+                for ver in ('2.22.0', '2.23.0'):
+                    if ver in value['versions']:
+                        value['versions'][ver]['preload_sha256'] = p.digest(preload)
             return value
         self.loads_patch = patch.object(p.json, 'loads', side_effect=loads)
         self.loads_patch.start()
@@ -101,6 +103,17 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(info['archive'].read('asset'), b'unchanged')
 
     def test_version_and_symlink_rejected(self):
+        # Verify 2.23.0 is accepted when bundle and package.json match 2.23.0
+        preload = b'/* test preload */'
+        data_223 = make_archive({'package.json': json.dumps({'name':'antigravity','version':'2.23.0'}).encode(),
+                                 'dist/preload.js': preload, 'asset': b'unchanged'})
+        self.asar.write_bytes(data_223)
+        plist_223 = plistlib.loads(self.plist.read_bytes())
+        plist_223['CFBundleShortVersionString'] = '2.23.0'
+        plist_223['ElectronAsarIntegrity']['Resources/app.asar']['hash'] = p.digest(p.Archive(data_223).raw_header)
+        self.plist.write_bytes(plistlib.dumps(plist_223))
+        self.assertEqual(p.inspect(self.app)['version'], '2.23.0')
+
         data = plistlib.loads(self.plist.read_bytes());data['CFBundleShortVersionString']='999.0'
         self.plist.write_bytes(plistlib.dumps(data))
         with self.assertRaises(ValueError): p.inspect(self.app)

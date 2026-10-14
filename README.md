@@ -6,7 +6,7 @@
 
 适用于 **Google Antigravity（反重力）Desktop** 的简体中文本地化补丁，提供常用设置翻译、中英文切换，以及原版应用的备份与还原。
 
-本项目由 **[徐老师AI / TeacherXuAI](https://github.com/TeacherXuAI)** 开发维护，采用 MIT 许可证开源，为非 Google 官方的社区项目。当前适配 **macOS 上的 Antigravity Desktop 2.22.0**，已在 Apple Silicon 设备上完成实机验证。
+本项目由 **[徐老师AI / TeacherXuAI](https://github.com/TeacherXuAI)** 开发维护，采用 MIT 许可证开源，为非 Google 官方的社区项目。当前适配 **macOS 上的 Antigravity Desktop 2.22.0 / 2.23.0**，已在 Apple Silicon 设备上完成实机验证。
 
 **[下载最新版本](https://github.com/TeacherXuAI/antigravity-zh-cn/releases/latest) · [安装指南](#install) · [更新日志](CHANGELOG.md) · [问题反馈](https://github.com/TeacherXuAI/antigravity-zh-cn/issues)**
 
@@ -50,7 +50,7 @@
 
 | 项目 | 支持情况 |
 | --- | --- |
-| 应用 | Google Antigravity Desktop **2.22.0** |
+| 应用 | Google Antigravity Desktop **2.22.0 / 2.23.0** |
 | 操作系统 | macOS |
 | 处理器 | Apple Silicon 已实测；Intel Mac 尚未实测 |
 | 安装环境 | Python **3.9+**，无需 Node.js 或 npm 依赖 |

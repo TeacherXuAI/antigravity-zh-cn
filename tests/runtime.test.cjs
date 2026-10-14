@@ -81,3 +81,85 @@ test('translation dictionary is plain exact-match strings with no markup',()=>{
   assert.equal(en.trim(),en);assert.equal(typeof zh,'string');assert.ok(zh.length);assert.ok(!/[<>]/.test(zh));
  }
 });
+test('translates 2.23.0 sidebar sections, testid buttons, project selector, and placeholders while protecting user names',()=>{
+ const dom=create(`<aside aria-label="Sidebar">
+  <button data-testid="automations-button"><span>Automations</span></button>
+  <button data-testid="settings-button"><span>Settings</span></button>
+  <div data-testid="section-header"><h2>Projects</h2></div>
+  <div data-testid="section-header"><h2>Conversations</h2></div>
+  <span>No conversations yet</span>
+  <div data-sidebar-row-id="conv-1"><span>No conversations yet</span></div>
+ </aside>
+ <main>
+  <button data-testid="project-selector-trigger"><span>No Project</span></button>
+  <button data-testid="project-selector-trigger"><span>General</span></button>
+  <p class="pointer-events-none">Ask anything, @ to mention, / for actions</p>
+  <div class="max-w-2xl">
+   <h1>Conversation History</h1>
+   <input placeholder="Search conversations...">
+   <div role="button"><span>Conversation History</span></div>
+  </div>
+ </main>`);
+ const w=dom.window,d=w.document;
+ assert.equal(d.querySelector('[data-testid="automations-button"]').textContent,'自动化');
+ assert.equal(d.querySelector('[data-testid="settings-button"]').textContent,'设置');
+ assert.deepEqual([...d.querySelectorAll('[data-testid="section-header"] h2')].map(e=>e.textContent),['项目','对话']);
+ assert.equal(d.querySelector('aside > span').textContent,'暂无对话');
+ assert.equal(d.querySelector('[data-sidebar-row-id] span').textContent,'No conversations yet');
+ const triggers=d.querySelectorAll('[data-testid="project-selector-trigger"]');
+ assert.equal(triggers[0].textContent,'未选择项目');
+ assert.equal(triggers[1].textContent,'General');
+ assert.equal(d.querySelector('p.pointer-events-none').textContent,'尽管提问，输入 @ 引用内容，输入 / 执行操作');
+ assert.equal(d.querySelector('main h1').textContent,'对话历史');
+ assert.equal(d.querySelector('main input').getAttribute('placeholder'),'搜索对话...');
+ assert.equal(d.querySelector('main [role="button"] span').textContent,'Conversation History');
+ w.__teacherxu_antigravity_zh__.setEnabled(false);
+ assert.equal(d.querySelector('main input').getAttribute('placeholder'),'Search conversations...');
+ dom.window.close();
+});
+test('translates dynamic quota refresh strings, plan description, chat toolbar, and overview panel',()=>{
+ const dom=create(`<section aria-label="Settings"><h1>Settings</h1><nav><button>General</button><button>Application</button><button>Appearance</button></nav><article><h2>Models &amp; Usage</h2>
+  <p id="plan-desc">You are subscribed to the best Google AI plan.</p>
+  <p id="q1">You have used some of your weekly limit, it will fully refresh in 3 days, 20 hours.</p>
+  <p id="q2">You have used some of your 5-hour limit, it will fully refresh in 1 hour, 47 minutes.</p>
+ </article></section>
+ <div data-testid="agent-input-box">
+  <div contenteditable="true">Medium</div>
+  <button data-testid="model-selector-trigger"><span>Gemini 4 Argon<span class="opacity-70"> Medium</span></span></button>
+  <button><span id="mode-turbo">Turbo</span></button>
+ </div>
+ <div data-testid="overview-panel"><span id="ov-title">Overview</span><span id="ov-file">main.js</span></div>`);
+ const w=dom.window,d=w.document;
+ assert.equal(d.querySelector('#plan-desc').textContent,'你已订阅最高等级的 Google AI 套餐。');
+ assert.equal(d.querySelector('#q1').textContent,'你已使用部分本周额度，将于 3 天 20 小时后完全恢复。');
+ assert.equal(d.querySelector('#q2').textContent,'你已使用部分 5 小时额度，将于 1 小时 47 分钟后完全恢复。');
+ assert.equal(d.querySelector('[contenteditable]').textContent,'Medium');
+ assert.equal(d.querySelector('[data-testid="model-selector-trigger"]').textContent,'Gemini 4 Argon 中');
+ assert.equal(d.querySelector('#mode-turbo').textContent,'极速模式（Turbo）');
+ assert.equal(d.querySelector('#ov-title').textContent,'概览');
+ assert.equal(d.querySelector('#ov-file').textContent,'main.js');
+ w.__teacherxu_antigravity_zh__.setEnabled(false);
+ assert.equal(d.querySelector('#q1').textContent,'You have used some of your weekly limit, it will fully refresh in 3 days, 20 hours.');
+ dom.window.close();
+});
+test('translates portal dropdown menus and changed files bar while protecting project and model names',()=>{
+ const dom=create(`<div class="files-changed-header"><span id="fc-count">1 file changed</span><button class="review-button"><span>Review</span></button></div>
+  <div class="z-[6000]">
+   <div role="menu">
+    <div data-testid="permissions-project-options"><span>Request Review</span><span>Every command requires approval.</span></div>
+    <div data-testid="project-selector-item" data-project-name="General"><span>General</span></div>
+    <span data-model-base="Default">Default</span>
+   </div>
+  </div>`);
+ const w=dom.window,d=w.document;
+ assert.equal(d.querySelector('#fc-count').textContent,'1 个文件已修改');
+ assert.equal(d.querySelector('.review-button').textContent,'审查变更');
+ assert.equal(d.querySelector('[data-testid="permissions-project-options"]').textContent,'请求审核每条命令都需要你的批准。');
+ assert.equal(d.querySelector('[data-testid="project-selector-item"]').textContent,'General');
+ assert.equal(d.querySelector('[data-model-base]').textContent,'Default');
+ w.__teacherxu_antigravity_zh__.setEnabled(false);
+ assert.equal(d.querySelector('#fc-count').textContent,'1 file changed');
+ dom.window.close();
+});
+
+
